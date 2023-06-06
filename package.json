@@ -1,0 +1,43 @@
+{
+  "name": "cloud-academy-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "yarn@3.6.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "format": "yarn format:file '**/*'",
+    "format:file": "prettier --write --ignore-unknown",
+    "lint": "yarn lint:file .",
+    "lint:file": "./node_modules/.bin/eslint --report-unused-disable-directives --max-warnings=0",
+    "postinstall": "husky install",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/prettier": "^2.7.3",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "~5.0.2",
+    "vite": "^4.3.9"
+  }
+}

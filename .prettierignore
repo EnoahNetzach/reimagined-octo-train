@@ -1,0 +1,5 @@
+/.husky/
+/.pnp.*
+/.yarn
+
+dist/

@@ -1,0 +1,17 @@
+{
+  "importOrder": ["^./env$", "<THIRD_PARTY_MODULES>", "^@(.*)$", "^/(.*)$", "^~(.*)$", ".css$", "^[./]"],
+  "overrides": [
+    {
+      "files": [".eslintrc", ".lintstagedrc", ".prettierrc", ".versionrc"],
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all"
+}
