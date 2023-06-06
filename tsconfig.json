@@ -17,5 +17,6 @@
     "useDefineForClassFields": true
   },
   "include": ["src"],
+  "exclude": ["__generated__"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

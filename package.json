@@ -5,10 +5,12 @@
   "type": "module",
   "packageManager": "yarn@3.6.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "yarn graphql:compile && vite",
+    "build": "yarn graphql:compile && tsc && vite build",
     "format": "yarn format:file '**/*'",
     "format:file": "prettier --write --ignore-unknown",
+    "graphql:compile": "graphql-codegen",
+    "graphql:watch": "yarn graphql:compile -w",
     "lint": "yarn lint:file .",
     "lint:file": "./node_modules/.bin/eslint --report-unused-disable-directives --max-warnings=0",
     "postinstall": "husky install",
@@ -16,10 +18,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.15",
+    "graphql": "^16.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
+    "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/client-preset": "^4.0.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/prettier": "^2.7.3",
     "@types/react": "^18.0.37",
@@ -27,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-html": "^7.1.0",
@@ -36,6 +45,7 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.2",
+    "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "typescript": "~5.0.2",
     "vite": "^4.3.9"

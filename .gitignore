@@ -18,3 +18,5 @@ node_modules
 dist
 dist-ssr
 *.local
+__generated__/
+schema.graphql
