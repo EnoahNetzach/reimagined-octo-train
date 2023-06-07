@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App mounts 1`] = `
+<React.Suspense
+  fallback={null}
+>
+  <ApolloProvider
+    client={
+      ApolloClient {
+        "options": {
+          "cache": InMemoryCache {
+            "options": {
+              "typePolicies": {
+                "Query": {
+                  "fields": {
+                    "characters": {
+                      "keyArgs": [
+                        "filter",
+                      ],
+                      "merge": [Function],
+                    },
+                  },
+                },
+              },
+            },
+          },
+          "uri": "https://rickandmortyapi.com/graphql",
+        },
+      }
+    }
+  >
+    <RouterProvider
+      router={
+        [
+          {
+            "children": [
+              {
+                "element": <Character />,
+                "errorElement": <ErrorPage />,
+                "path": "/character/:characterId",
+              },
+            ],
+            "element": <MainLayout />,
+            "errorElement": <ErrorPage />,
+            "path": "/",
+          },
+        ]
+      }
+    />
+  </ApolloProvider>
+</React.Suspense>
+`;

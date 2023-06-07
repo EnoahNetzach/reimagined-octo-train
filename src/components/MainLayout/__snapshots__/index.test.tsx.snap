@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainLayout mounts 1`] = `
+<div
+  className="p-4 h-screen grid gap-8 grid-cols-main grid-rows-1 text-white bg-black"
+>
+  <aside
+    className="overflow-scroll"
+  >
+    <Characters />
+  </aside>
+  <main
+    className="max-w-3xl overflow-scroll"
+  >
+    <Outlet />
+  </main>
+</div>
+`;

@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { gql } from '~/__generated__'
 import { Character } from '~/__generated__/graphql'
-import getCharacterStatusColor from '~/utils/getCharacterStatusColor.tsx'
+import getCharacterStatusColor from '~/utils/getCharacterStatusColor'
 
 const GET_CHARACTERS = gql(/* GraphQL */ `
   query GetCharacters($page: Int!, $filter: String) {

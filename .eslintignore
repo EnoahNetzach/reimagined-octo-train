@@ -1,2 +1,4 @@
 dist/
+coverage/
 __generated__/
+schema.graphql
