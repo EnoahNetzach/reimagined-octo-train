@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
-import { gql } from './__generated__'
-import getCharacterStatusColor from './getCharacterStatusColor.tsx'
+import { gql } from '~/__generated__'
+import { Episode } from '~/__generated__/graphql'
+import getCharacterStatusColor from '~/utils/getCharacterStatusColor'
 
-const GET_CHARACTER = gql`
+const GET_CHARACTER = gql(/* GraphQL */ `
   query GetCharacter($id: ID!) {
     character(id: $id) {
       id
@@ -39,21 +40,21 @@ const GET_CHARACTER = gql`
       }
     }
   }
-`
+`)
 
 export default function Character() {
   const { t } = useTranslation()
   const { characterId } = useParams()
-  const { data, loading } = useQuery(GET_CHARACTER, { variables: { id: characterId } })
+  const { data, loading } = useQuery(GET_CHARACTER, { variables: { id: characterId ?? '' } })
   const { character } = data ?? {}
 
   return (
     <article className="isolate grid gap-2 grid-cols-1">
-      {loading ? (
+      {loading || !character ? (
         t('loading')
       ) : (
         <>
-          <img alt="" className="object-cover max-h-96 max-w-96" src={character.image} />
+          <img alt="" className="object-cover max-h-96 max-w-96" src={character.image ?? undefined} />
 
           <h1 className="text-6xl font-bold text-primary">{character.name}</h1>
 
@@ -76,9 +77,9 @@ export default function Character() {
           </section>
 
           <section>
-            <h3 className={`text-secondary ${character.origin.id ? '' : 'inline-block'}`}>{t('origin.name')}</h3>
+            <h3 className={`text-secondary ${character.origin?.id ? '' : 'inline-block'}`}>{t('origin.name')}</h3>
 
-            {character.origin.id ? (
+            {character.origin?.id ? (
               <details>
                 <summary>{character.origin.name}</summary>
 
@@ -86,9 +87,9 @@ export default function Character() {
                   <h4 className="text-ternary inline-block">{t('location.type')}</h4> {character.origin.type}
                   <br />
                   <h4 className="text-ternary inline-block">{t('location.dimension')}</h4>{' '}
-                  {character.origin.dimension.toLowerCase() === 'unknown'
-                    ? t('dimension.unknown')
-                    : character.origin.dimension}
+                  {character.origin.dimension?.toLowerCase() !== 'unknown'
+                    ? character.origin.dimension
+                    : t('dimension.unknown')}
                   <br />
                   <h4 className="text-ternary inline-block">{t('location.residents')}</h4>{' '}
                   {character.origin.residents.length}
@@ -100,9 +101,9 @@ export default function Character() {
           </section>
 
           <section>
-            <h3 className={`text-secondary ${character.location.id ? '' : 'inline-block'}`}>{t('location.name')}</h3>
+            <h3 className={`text-secondary ${character.location?.id ? '' : 'inline-block'}`}>{t('location.name')}</h3>
 
-            {character.location.id ? (
+            {character.location?.id ? (
               <details>
                 <summary>{character.location.name}</summary>
 
@@ -110,9 +111,9 @@ export default function Character() {
                   <h4 className="text-ternary inline-block">{t('location.type')}</h4> {character.location.type}
                   <br />
                   <h4 className="text-ternary inline-block">{t('location.dimension')}</h4>{' '}
-                  {character.location.dimension.toLowerCase() === 'unknown'
-                    ? t('dimension.unknown')
-                    : character.location.dimension}
+                  {character.location.dimension?.toLowerCase() !== 'unknown'
+                    ? character.location.dimension
+                    : t('dimension.unknown')}
                   <br />
                   <h4 className="text-ternary inline-block">{t('location.residents')}</h4>{' '}
                   {character.location.residents.length}
@@ -128,15 +129,17 @@ export default function Character() {
             <details>
               <summary>{t('episode.number', { count: character.episode.length })}</summary>
 
-              {character.episode.map((episode) => (
-                <div className="py-0 px-4" key={episode.id}>
-                  <h4 className="text-ternary inline-block">{episode.name}</h4>{' '}
-                  {t('episode.aired', {
-                    formatParams: { val: { year: 'numeric', month: 'short', day: 'numeric' } },
-                    val: new Date(Date.parse(episode.air_date)),
-                  })}
-                </div>
-              ))}
+              {character.episode
+                .filter((episode: unknown): episode is Episode => !!episode)
+                .map((episode) => (
+                  <div className="py-0 px-4" key={episode.id}>
+                    <h4 className="text-ternary inline-block">{episode.name}</h4>{' '}
+                    {t('episode.aired', {
+                      formatParams: { val: { year: 'numeric', month: 'short', day: 'numeric' } },
+                      val: new Date(Date.parse(episode.air_date ?? '')),
+                    })}
+                  </div>
+                ))}
             </details>
           </section>
         </>

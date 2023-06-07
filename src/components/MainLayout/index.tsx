@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Characters from './Characters.tsx'
+import Characters from '~/components/Characters'
 
 export default function MainLayout() {
   return (

@@ -15,7 +15,8 @@
     "lint:file": "./node_modules/.bin/eslint --report-unused-disable-directives --max-warnings=0",
     "postinstall": "husky install",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "types": "yarn tsc --noEmit"
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",

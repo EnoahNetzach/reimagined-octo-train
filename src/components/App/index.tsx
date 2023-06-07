@@ -1,9 +1,9 @@
 import { Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
-import Character from './Character.tsx'
-import ErrorPage from './ErrorPage'
-import MainLayout from './MainLayout.tsx'
+import Character from '~/components/Character'
+import ErrorPage from '~/components/ErrorPage'
+import MainLayout from '~/components/MainLayout'
 
 const router = createBrowserRouter([
   {

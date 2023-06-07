@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
-import { gql } from './__generated__'
-import { Character } from './__generated__/graphql.ts'
-import getCharacterStatusColor from './getCharacterStatusColor.tsx'
+import { gql } from '~/__generated__'
+import { Character } from '~/__generated__/graphql'
+import getCharacterStatusColor from '~/utils/getCharacterStatusColor.tsx'
 
-const GET_CHARACTERS = gql`
+const GET_CHARACTERS = gql(/* GraphQL */ `
   query GetCharacters($page: Int!, $filter: String) {
     characters(page: $page, filter: { name: $filter }) {
       info {
@@ -29,7 +29,7 @@ const GET_CHARACTERS = gql`
       }
     }
   }
-`
+`)
 
 export default function Characters() {
   const { t } = useTranslation()
@@ -67,14 +67,15 @@ export default function Characters() {
       ) : (
         <>
           {data?.characters?.results
-            ?.map((character: Character) =>
+            ?.filter((character: unknown): character is Character => !!character)
+            .map((character: Character) =>
               character ? (
                 <Link key={character.id} to={`/character/${character.id}`}>
                   <figure
                     aria-selected={characterId === character.id}
                     className={`flex gap-4 flex-row ${characterId === character.id ? 'bg-gray-800' : 'bg-gray-900'}`}
                   >
-                    <img alt="" className="object-cover max-h-24 max-w-24" src={character.image} />
+                    <img alt="" className="object-cover max-h-24 max-w-24" src={character.image ?? ''} />
 
                     <figcaption className="flex-grow">
                       <h2 className="text-lg font-bold text-primary">{character.name}</h2>
@@ -89,12 +90,12 @@ export default function Characters() {
 
                       <section>
                         <h3 className="text-secondary">{t('location.name')}</h3>
-                        {character.location.id ? character.location.name : t('location.unknown')}
+                        {character.location?.id ? character.location.name : t('location.unknown')}
                       </section>
 
                       <section>
                         <h3 className="text-secondary">{t('episode.first.name')}</h3>
-                        {character.episode[0].name}
+                        {character.episode[0]?.name}
                       </section>
                     </figcaption>
                   </figure>
@@ -103,7 +104,7 @@ export default function Characters() {
             )
             .filter(Boolean)}
 
-          {data?.characters.info.count > data?.characters?.results.length ? (
+          {(data?.characters?.info?.count ?? 0) > (data?.characters?.results?.length ?? 0) ? (
             <div>
               <button onClick={loadMore}>{t('list.loadMore')}</button>
             </div>

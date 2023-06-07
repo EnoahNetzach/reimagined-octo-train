@@ -1,6 +1,4 @@
-import { Character } from './__generated__/graphql.ts'
-
-export default function getCharacterStatusColor(character: Character) {
+export default function getCharacterStatusColor(character: { status?: string | null }) {
   switch (character.status?.toLowerCase()) {
     case 'alive':
       return 'bg-green-500' as const
