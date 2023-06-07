@@ -9,9 +9,9 @@ export default i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: '/locales/{{lng}}.json',
+      loadPath: `${import.meta.env.BASE_URL ?? '/'}locales/{{lng}}.json`,
     },
-    debug: process.env.NODE_ENV !== 'production',
+    debug: import.meta.env.NODE_ENV !== 'production',
     detection: {
       order: ['querystring', 'navigator', 'path', 'subdomain', 'cookie', 'localStorage', 'sessionStorage', 'htmlTag'],
     },

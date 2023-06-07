@@ -5,14 +5,19 @@ import Character from '~/components/Character'
 import ErrorPage from '~/components/ErrorPage'
 import MainLayout from '~/components/MainLayout'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <MainLayout />,
+      errorElement: <ErrorPage />,
+      children: [{ path: '/character/:characterId', element: <Character />, errorElement: <ErrorPage /> }],
+    },
+  ],
   {
-    path: '/',
-    element: <MainLayout />,
-    errorElement: <ErrorPage />,
-    children: [{ path: '/character/:characterId', element: <Character />, errorElement: <ErrorPage /> }],
+    basename: import.meta.env.BASE_URL,
   },
-])
+)
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
