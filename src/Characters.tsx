@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { gql } from './__generated__'
@@ -31,6 +32,7 @@ const GET_CHARACTERS = gql`
 `
 
 export default function Characters() {
+  const { t } = useTranslation()
   const { characterId } = useParams()
 
   const [filter, setFilter] = useState('')
@@ -56,12 +58,12 @@ export default function Characters() {
     <div className="flex gap-4 flex-col">
       <div className="sticky self-start top-0 bg-gray-900 w-full p-2">
         <label>
-          Filter: <input onChange={(event) => setFilter(event.target.value)} value={filter} />
+          {t('list.filter')} <input onChange={(event) => setFilter(event.target.value)} value={filter} />
         </label>
       </div>
 
       {loading ? (
-        'loading...'
+        t('loading')
       ) : (
         <>
           {data?.characters?.results
@@ -79,20 +81,20 @@ export default function Characters() {
 
                       <section>
                         <span
-                          aria-description="Status"
+                          aria-description={t('character.status')}
                           className={`inline-block rounded-full w-2 h-2 ${getCharacterStatusColor(character)}`}
                         />{' '}
-                        {character.status} - {character.species}
+                        {t(`character.status.${character.status?.toLowerCase()}`)} - {character.species}
                       </section>
 
                       <section>
-                        <h3 className="text-secondary">Last known location:</h3>
-                        {character.location?.name ?? 'unknown'}
+                        <h3 className="text-secondary">{t('location.name')}</h3>
+                        {character.location.id ? character.location.name : t('location.unknown')}
                       </section>
 
                       <section>
-                        <h3 className="text-secondary">First seen in:</h3>
-                        {character.episode[0]?.name}
+                        <h3 className="text-secondary">{t('episode.first.name')}</h3>
+                        {character.episode[0].name}
                       </section>
                     </figcaption>
                   </figure>
@@ -103,7 +105,7 @@ export default function Characters() {
 
           {data?.characters.info.count > data?.characters?.results.length ? (
             <div>
-              <button onClick={loadMore}>Load more</button>
+              <button onClick={loadMore}>{t('list.loadMore')}</button>
             </div>
           ) : null}
         </>

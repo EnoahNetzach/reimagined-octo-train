@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import Character from './Character.tsx'
@@ -35,8 +36,10 @@ const client = new ApolloClient({
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <RouterProvider router={router} />
-    </ApolloProvider>
+    <Suspense fallback={null}>
+      <ApolloProvider client={client}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
+    </Suspense>
   )
 }

@@ -8,7 +8,7 @@ export default function MainLayout() {
         <Characters />
       </aside>
 
-      <main className="max-w-3xl">
+      <main className="max-w-3xl overflow-scroll">
         <Outlet />
       </main>
     </div>

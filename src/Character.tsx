@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { gql } from './__generated__'
@@ -40,14 +41,8 @@ const GET_CHARACTER = gql`
   }
 `
 
-const dateFormatter = (date: string) =>
-  new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  }).format(new Date(Date.parse(date)))
-
 export default function Character() {
+  const { t } = useTranslation()
   const { characterId } = useParams()
   const { data, loading } = useQuery(GET_CHARACTER, { variables: { id: characterId } })
   const { character } = data ?? {}
@@ -55,7 +50,7 @@ export default function Character() {
   return (
     <article className="isolate grid gap-2 grid-cols-1">
       {loading ? (
-        'loading...'
+        t('loading')
       ) : (
         <>
           <img alt="" className="object-cover max-h-96 max-w-96" src={character.image} />
@@ -64,68 +59,82 @@ export default function Character() {
 
           <section>
             <span
-              aria-description="Status"
+              aria-description={t('character.status')}
               className={`inline-block rounded-full w-2 h-2 ${getCharacterStatusColor(character)}`}
             />{' '}
-            {character.status}
+            {t(`character.status.${character.status?.toLowerCase()}`)}
           </section>
 
           <section>
-            <h3 className="text-secondary inline-block">Species:</h3> {character.species}
+            <h3 className="text-secondary inline-block">{t('character.species')}</h3> {character.species}
             {character.type ? <span> ({character.type})</span> : null}
           </section>
 
           <section>
-            <h3 className="text-secondary inline-block">Gender:</h3> {character.gender}
+            <h3 className="text-secondary inline-block">{t('character.gender')}</h3>{' '}
+            {t(`character.gender.${character.gender?.toLowerCase()}`)}
           </section>
 
           <section>
-            <h3 className="text-secondary">Origin:</h3>
+            <h3 className={`text-secondary ${character.origin.id ? '' : 'inline-block'}`}>{t('origin.name')}</h3>
 
             {character.origin.id ? (
               <details>
                 <summary>{character.origin.name}</summary>
 
                 <div className="py-0 px-4">
-                  <h4 className="text-ternary inline-block">Type:</h4> {character.origin.type}
+                  <h4 className="text-ternary inline-block">{t('location.type')}</h4> {character.origin.type}
                   <br />
-                  <h4 className="text-ternary inline-block">Dimension:</h4> {character.origin.dimension}
+                  <h4 className="text-ternary inline-block">{t('location.dimension')}</h4>{' '}
+                  {character.origin.dimension.toLowerCase() === 'unknown'
+                    ? t('dimension.unknown')
+                    : character.origin.dimension}
                   <br />
-                  <h4 className="text-ternary inline-block">Known residents:</h4> {character.origin.residents.length}
+                  <h4 className="text-ternary inline-block">{t('location.residents')}</h4>{' '}
+                  {character.origin.residents.length}
                 </div>
               </details>
             ) : (
-              character.origin.name
+              ' ' + t('origin.unknown')
             )}
           </section>
 
           <section>
-            <h3 className="text-secondary">Last known location:</h3>
+            <h3 className={`text-secondary ${character.location.id ? '' : 'inline-block'}`}>{t('location.name')}</h3>
+
             {character.location.id ? (
               <details>
                 <summary>{character.location.name}</summary>
 
                 <div className="py-0 px-4">
-                  <h4 className="text-ternary inline-block">Type:</h4> {character.location.type}
+                  <h4 className="text-ternary inline-block">{t('location.type')}</h4> {character.location.type}
                   <br />
-                  <h4 className="text-ternary inline-block">Dimension:</h4> {character.location.dimension}
+                  <h4 className="text-ternary inline-block">{t('location.dimension')}</h4>{' '}
+                  {character.location.dimension.toLowerCase() === 'unknown'
+                    ? t('dimension.unknown')
+                    : character.location.dimension}
                   <br />
-                  <h4 className="text-ternary inline-block">Known residents:</h4> {character.location.residents.length}
+                  <h4 className="text-ternary inline-block">{t('location.residents')}</h4>{' '}
+                  {character.location.residents.length}
                 </div>
               </details>
             ) : (
-              character.location.name
+              ' ' + t('location.unknown')
             )}
           </section>
 
           <section>
-            <h3 className="text-secondary">Appeared in:</h3>
+            <h3 className="text-secondary">{t('episode.list')}</h3>
             <details>
-              <summary>{character.episode.length} episodes</summary>
+              <summary>{t('episode.number', { count: character.episode.length })}</summary>
 
               {character.episode.map((episode) => (
                 <div className="py-0 px-4" key={episode.id}>
-                  <h4 className="text-ternary inline-block">{episode.name}</h4> aired {dateFormatter(episode.air_date)}
+                  <h4 className="text-ternary inline-block">{episode.name}</h4>{' '}
+                  {t('episode.aired', {
+                    formatParams: { val: { year: 'numeric', month: 'short', day: 'numeric' } },
+                    val: new Date(Date.parse(episode.air_date)),
+                  })}
                 </div>
               ))}
             </details>
