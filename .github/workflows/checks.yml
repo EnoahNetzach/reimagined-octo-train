@@ -1,0 +1,44 @@
+name: Performs all checks
+
+on:
+  push:
+    branches: ['main']
+
+concurrency:
+  group: 'checks'
+  cancel-in-progress: false
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: GraphQL Code Gen
+        run: yarn graphql:compile
+
+      - name: Format
+        run: yarn format --check --no-write
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Types
+        run: yarn types
+
+      - name: Unit Tests
+        run: yarn test --no-watch
+
+      - name: Build
+        run: vite build
