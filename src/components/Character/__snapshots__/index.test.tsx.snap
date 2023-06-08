@@ -15,146 +15,151 @@ exports[`Character mounts 1`] = `
   <React.Fragment>
     <img
       alt=""
-      className="object-cover max-h-96 max-w-96"
+      className="object-cover h-48 w-48 lg:h-96 lg:w-96"
+      fetchPriority="high"
       src="__character_image__"
     />
-    <h1
-      className="text-6xl font-bold text-primary"
+    <div
+      className="lg:contents"
     >
-      __character_name__
-    </h1>
-    <section>
-      <span
-        aria-description="t(character.status)"
-        className="inline-block rounded-full w-2 h-2 __character_status_color__"
-      />
-       
-      t(character.status.__character_status__)
-    </section>
-    <section>
-      <h3
-        className="text-secondary inline-block"
+      <h1
+        className="text-4xl lg:text-6xl font-bold text-primary"
       >
-        t(character.species)
-      </h3>
-       
-      __character_species__
-      <span>
-         (
-        __character_type__
-        )
-      </span>
-    </section>
-    <section>
-      <h3
-        className="text-secondary inline-block"
-      >
-        t(character.gender)
-      </h3>
-       
-      t(character.gender.__character_gender__)
-    </section>
-    <section>
-      <h3
-        className="text-secondary "
-      >
-        t(origin.name)
-      </h3>
-      <details>
-        <summary>
-          __character_origin_name__
-        </summary>
-        <div
-          className="py-0 px-4"
+        __character_name__
+      </h1>
+      <section>
+        <span
+          aria-description="t(character.status)"
+          className="inline-block rounded-full w-2 h-2 __character_status_color__"
+        />
+         
+        t(character.status.__character_status__)
+      </section>
+      <section>
+        <h3
+          className="text-secondary inline-block"
         >
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.type)
-          </h4>
-           
-          __character_origin_type__
-          <br />
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.dimension)
-          </h4>
-           
-          __character_origin_dimension__
-          <br />
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.residents)
-          </h4>
-           
-          6
-        </div>
-      </details>
-    </section>
-    <section>
-      <h3
-        className="text-secondary "
-      >
-        t(location.name)
-      </h3>
-      <details>
-        <summary>
-          __character_location_name__
-        </summary>
-        <div
-          className="py-0 px-4"
+          t(character.species)
+        </h3>
+         
+        __character_species__
+        <span>
+           (
+          __character_type__
+          )
+        </span>
+      </section>
+      <section>
+        <h3
+          className="text-secondary inline-block"
         >
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.type)
-          </h4>
-           
-          __character_location_type__
-          <br />
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.dimension)
-          </h4>
-           
-          __character_location_dimension__
-          <br />
-          <h4
-            className="text-ternary inline-block"
-          >
-            t(location.residents)
-          </h4>
-           
-          5
-        </div>
-      </details>
-    </section>
-    <section>
-      <h3
-        className="text-secondary"
-      >
-        t(episode.list)
-      </h3>
-      <details>
-        <summary>
-          t(episode.number)
-        </summary>
-        <div
-          className="py-0 px-4"
+          t(character.gender)
+        </h3>
+         
+        t(character.gender.__character_gender__)
+      </section>
+      <section>
+        <h3
+          className="text-secondary "
         >
-          <h4
-            className="text-ternary inline-block"
+          t(origin.name)
+        </h3>
+        <details>
+          <summary>
+            __character_origin_name__
+          </summary>
+          <div
+            className="py-0 px-4"
           >
-            __character_episode_name__
-          </h4>
-           
-          t(episode.aired)
-        </div>
-      </details>
-    </section>
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.type)
+            </h4>
+             
+            __character_origin_type__
+            <br />
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.dimension)
+            </h4>
+             
+            __character_origin_dimension__
+            <br />
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.residents)
+            </h4>
+             
+            6
+          </div>
+        </details>
+      </section>
+      <section>
+        <h3
+          className="text-secondary "
+        >
+          t(location.name)
+        </h3>
+        <details>
+          <summary>
+            __character_location_name__
+          </summary>
+          <div
+            className="py-0 px-4"
+          >
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.type)
+            </h4>
+             
+            __character_location_type__
+            <br />
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.dimension)
+            </h4>
+             
+            __character_location_dimension__
+            <br />
+            <h4
+              className="text-ternary inline-block"
+            >
+              t(location.residents)
+            </h4>
+             
+            5
+          </div>
+        </details>
+      </section>
+      <section>
+        <h3
+          className="text-secondary"
+        >
+          t(episode.list)
+        </h3>
+        <details>
+          <summary>
+            t(episode.number)
+          </summary>
+          <div
+            className="py-0 px-4"
+          >
+            <h4
+              className="text-ternary inline-block"
+            >
+              __character_episode_name__
+            </h4>
+             
+            t(episode.aired)
+          </div>
+        </details>
+      </section>
+    </div>
   </React.Fragment>
 </article>
 `;

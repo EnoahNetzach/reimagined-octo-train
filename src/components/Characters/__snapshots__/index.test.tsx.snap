@@ -5,16 +5,20 @@ exports[`Characters loads 1`] = `
   className="flex gap-4 flex-col"
 >
   <div
-    className="sticky self-start top-0 bg-gray-900 w-full p-2"
+    className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2"
   >
-    <label>
+    <label
+      className="self-center"
+      htmlFor="main-search"
+    >
       t(list.filter)
-       
-      <input
-        onChange={[Function]}
-        value=""
-      />
     </label>
+    <input
+      className="w-full p-1"
+      id="main-search"
+      onChange={[Function]}
+      value=""
+    />
   </div>
   t(loading)
 </div>
@@ -25,28 +29,37 @@ exports[`Characters mounts 1`] = `
   className="flex gap-4 flex-col"
 >
   <div
-    className="sticky self-start top-0 bg-gray-900 w-full p-2"
+    className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2"
   >
-    <label>
+    <label
+      className="self-center"
+      htmlFor="main-search"
+    >
       t(list.filter)
-       
-      <input
-        onChange={[Function]}
-        value=""
-      />
     </label>
+    <input
+      className="w-full p-1"
+      id="main-search"
+      onChange={[Function]}
+      value=""
+    />
   </div>
-  <React.Fragment>
+  <nav
+    aria-label="Customer service"
+    className="contents"
+  >
     <Link
+      aria-current={false}
       to="/character/__character_1_id__"
     >
       <figure
-        aria-selected={false}
-        className="flex gap-4 flex-row bg-gray-900"
+        className="flex gap-4 flex-row p-2 bg-gray-900"
+        role="row"
       >
         <img
           alt=""
-          className="object-cover max-h-24 max-w-24"
+          className="self-center object-cover h-24 w-24"
+          fetchPriority="low"
           src="__character_1_image__"
         />
         <figcaption
@@ -87,15 +100,17 @@ exports[`Characters mounts 1`] = `
       </figure>
     </Link>
     <Link
+      aria-current={false}
       to="/character/__character_2_id__"
     >
       <figure
-        aria-selected={false}
-        className="flex gap-4 flex-row bg-gray-900"
+        className="flex gap-4 flex-row p-2 bg-gray-900"
+        role="row"
       >
         <img
           alt=""
-          className="object-cover max-h-24 max-w-24"
+          className="self-center object-cover h-24 w-24"
+          fetchPriority="low"
           src="__character_2_image__"
         />
         <figcaption
@@ -136,15 +151,17 @@ exports[`Characters mounts 1`] = `
       </figure>
     </Link>
     <Link
+      aria-current={false}
       to="/character/__character_3_id__"
     >
       <figure
-        aria-selected={false}
-        className="flex gap-4 flex-row bg-gray-900"
+        className="flex gap-4 flex-row p-2 bg-gray-900"
+        role="row"
       >
         <img
           alt=""
-          className="object-cover max-h-24 max-w-24"
+          className="self-center object-cover h-24 w-24"
+          fetchPriority="low"
           src="__character_3_image__"
         />
         <figcaption
@@ -191,6 +208,6 @@ exports[`Characters mounts 1`] = `
         t(list.loadMore)
       </button>
     </div>
-  </React.Fragment>
+  </nav>
 </div>
 `;

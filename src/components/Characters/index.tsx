@@ -56,26 +56,39 @@ export default function Characters() {
 
   return (
     <div className="flex gap-4 flex-col">
-      <div className="sticky self-start top-0 bg-gray-900 w-full p-2">
-        <label>
-          {t('list.filter')} <input onChange={(event) => setFilter(event.target.value)} value={filter} />
+      <div className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2">
+        <label className="self-center" htmlFor="main-search">
+          {t('list.filter')}
         </label>
+        <input
+          className="w-full p-1"
+          id="main-search"
+          onChange={(event) => setFilter(event.target.value)}
+          value={filter}
+        />
       </div>
 
       {loading ? (
         t('loading')
       ) : (
-        <>
+        <nav aria-label="Customer service" className="contents">
           {data?.characters?.results
             ?.filter((character: unknown): character is Character => !!character)
             .map((character: Character) =>
               character ? (
-                <Link key={character.id} to={`/character/${character.id}`}>
+                <Link aria-current={characterId === character.id} key={character.id} to={`/character/${character.id}`}>
                   <figure
-                    aria-selected={characterId === character.id}
-                    className={`flex gap-4 flex-row ${characterId === character.id ? 'bg-gray-800' : 'bg-gray-900'}`}
+                    className={`flex gap-4 flex-row p-2 ${
+                      characterId === character.id ? 'bg-gray-800' : 'bg-gray-900'
+                    }`}
+                    role="row"
                   >
-                    <img alt="" className="object-cover max-h-24 max-w-24" src={character.image ?? ''} />
+                    <img
+                      alt=""
+                      className="self-center object-cover h-24 w-24"
+                      fetchPriority="low"
+                      src={character.image ?? ''}
+                    />
 
                     <figcaption className="flex-grow">
                       <h2 className="text-lg font-bold text-primary">{character.name}</h2>
@@ -109,7 +122,7 @@ export default function Characters() {
               <button onClick={loadMore}>{t('list.loadMore')}</button>
             </div>
           ) : null}
-        </>
+        </nav>
       )}
     </div>
   )
