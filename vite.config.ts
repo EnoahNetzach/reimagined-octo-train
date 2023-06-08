@@ -10,6 +10,7 @@ export default defineConfig({
       '~/__generated__': path.resolve(__dirname, '/src/__generated__'),
       '~/components': path.resolve(__dirname, '/src/components'),
       '~/contexts': path.resolve(__dirname, '/src/contexts'),
+      '~/configs': path.resolve(__dirname, '/src/configs.ts'),
       '~/hooks': path.resolve(__dirname, '/src/hooks'),
       '~/types': path.resolve(__dirname, '/src/types'),
       '~/utils': path.resolve(__dirname, '/src/utils'),

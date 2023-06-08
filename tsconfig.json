@@ -16,6 +16,7 @@
       "~/__generated__": ["src/__generated__/index.ts"],
       "~/__generated__/*": ["src/__generated__/*"],
       "~/components/*": ["src/components/*"],
+      "~/configs": ["src/configs.ts"],
       "~/contexts/*": ["src/contexts/*"],
       "~/hooks/*": ["src/hooks/*"],
       "~/types/*": ["src/types/*"],

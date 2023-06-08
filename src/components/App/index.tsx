@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import Character from '~/components/Character'
 import ErrorPage from '~/components/ErrorPage'
 import MainLayout from '~/components/MainLayout'
+import { basePath } from '~/configs'
 
 const router = createBrowserRouter(
   [
@@ -15,7 +16,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: import.meta.env.BASE_URL,
+    basename: basePath,
   },
 )
 

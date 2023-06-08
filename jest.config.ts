@@ -93,6 +93,7 @@ export default {
     '^~/__generated__$': '<rootDir>/src/__generated__/index.ts',
     '^~/__generated__/(.*)$': '<rootDir>/src/__generated__/$1',
     '^~/components/(.*)$': '<rootDir>/src/components/$1',
+    '^~/configs$': '<rootDir>/src/configs.ts',
     '^~/contexts/(.*)$': '<rootDir>/src/contexts/$1',
     '^~/hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^~/types/(.*)$': '<rootDir>/src/types/$1',
@@ -109,7 +110,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: 'ts-jest',
+  // preset: undefined,
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -182,9 +183,7 @@ export default {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
+  // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
