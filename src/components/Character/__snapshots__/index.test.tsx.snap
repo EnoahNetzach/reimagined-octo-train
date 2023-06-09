@@ -4,7 +4,11 @@ exports[`Character loads 1`] = `
 <article
   className="isolate grid gap-2 grid-cols-1"
 >
-  t(loading)
+  <div
+    className="p-8 flex justify-center"
+  >
+    <Loading />
+  </div>
 </article>
 `;
 

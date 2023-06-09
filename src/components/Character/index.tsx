@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { gql } from '~/__generated__'
 import { Episode } from '~/__generated__/graphql'
+import Loading from '~/components/Loading'
 import getCharacterStatusColor from '~/utils/getCharacterStatusColor'
 
 const GET_CHARACTER = gql(/* GraphQL */ `
@@ -51,7 +52,9 @@ export default function Character() {
   return (
     <article className="isolate grid gap-2 grid-cols-1">
       {loading || !character ? (
-        t('loading')
+        <div className="p-8 flex justify-center">
+          <Loading />
+        </div>
       ) : (
         <>
           <img

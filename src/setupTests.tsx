@@ -25,3 +25,5 @@ jest.mock('react-router-dom', () => {
 declare module 'react-router-dom' {
   export function __linkOnClick(): void
 }
+
+jest.mock('~/components/Loading/portal.png', () => 'asset:~/components/Loading/portal.png')
