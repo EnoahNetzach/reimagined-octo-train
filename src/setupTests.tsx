@@ -16,6 +16,7 @@ jest.mock('react-router-dom', () => {
     Link: ({ children, to }: PropsWithChildren<{ to: string }>) => <a onClick={() => __linkOnClick(to)}>{children}</a>,
     __linkOnClick,
     Outlet: () => <></>,
+    useLocation: () => Math.random().toString(16),
     useParams: () => ({ characterId: 1 }),
     useRouteError: jest.fn(() => new Error('__route_error__')),
   }

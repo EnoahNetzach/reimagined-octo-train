@@ -9,13 +9,48 @@ jest.mock('@apollo/client', () => ({
       this.options = options
     }
   },
+  ApolloProvider: ({ children }: PropsWithChildren) => <>{children}</>,
+  BatchHttpLink: class {
+    options: unknown
+    constructor(options: unknown) {
+      this.options = options
+    }
+  },
   InMemoryCache: class {
     options: unknown
     constructor(options: unknown) {
       this.options = options
     }
   },
-  ApolloProvider: ({ children }: PropsWithChildren) => <>{children}</>,
+  RetryLink: class {
+    options: unknown
+    constructor(options: unknown) {
+      this.options = options
+    }
+  },
+}))
+
+jest.mock('@apollo/client/link/batch-http', () => ({
+  BatchHttpLink: class {
+    options: unknown
+    constructor(options: unknown) {
+      this.options = options
+    }
+  },
+}))
+
+jest.mock('@apollo/client/link/retry', () => ({
+  RetryLink: class {
+    next: unknown
+    options: unknown
+    constructor(options: unknown) {
+      this.options = options
+    }
+    concat(next: unknown) {
+      this.next = next
+      return this
+    }
+  },
 }))
 
 jest.mock('react-router-dom', () => ({

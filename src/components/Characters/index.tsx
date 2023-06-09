@@ -58,7 +58,7 @@ export default function Characters() {
   }, [fetchMore, latestPageLoaded])
 
   return (
-    <div className="flex gap-4 flex-col">
+    <div className="flex gap-y-0.5 flex-col">
       <div className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2">
         <label className="self-center" htmlFor="main-search">
           {t('list.filter')}

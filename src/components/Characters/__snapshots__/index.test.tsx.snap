@@ -2,7 +2,7 @@
 
 exports[`Characters loads 1`] = `
 <div
-  className="flex gap-4 flex-col"
+  className="flex gap-y-0.5 flex-col"
 >
   <div
     className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2"
@@ -26,7 +26,7 @@ exports[`Characters loads 1`] = `
 
 exports[`Characters mounts 1`] = `
 <div
-  className="flex gap-4 flex-col"
+  className="flex gap-y-0.5 flex-col"
 >
   <div
     className="sticky self-start top-0 bg-gray-900 w-full p-2 flex gap-2"
@@ -59,7 +59,7 @@ exports[`Characters mounts 1`] = `
         <img
           alt=""
           className="self-center object-cover h-24 w-24"
-          fetchPriority="low"
+          fetchpriority="low"
           src="__character_1_image__"
         />
         <figcaption
@@ -110,7 +110,7 @@ exports[`Characters mounts 1`] = `
         <img
           alt=""
           className="self-center object-cover h-24 w-24"
-          fetchPriority="low"
+          fetchpriority="low"
           src="__character_2_image__"
         />
         <figcaption
@@ -161,7 +161,7 @@ exports[`Characters mounts 1`] = `
         <img
           alt=""
           className="self-center object-cover h-24 w-24"
-          fetchPriority="low"
+          fetchpriority="low"
           src="__character_3_image__"
         />
         <figcaption
@@ -203,6 +203,7 @@ exports[`Characters mounts 1`] = `
     </Link>
     <div>
       <button
+        disabled={false}
         onClick={[Function]}
       >
         t(list.loadMore)

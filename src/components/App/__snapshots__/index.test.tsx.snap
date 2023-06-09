@@ -24,7 +24,21 @@ exports[`App mounts 1`] = `
               },
             },
           },
-          "uri": "https://rickandmortyapi.com/graphql",
+          "link": RetryLink {
+            "next": BatchHttpLink {
+              "options": {
+                "uri": "https://rickandmortyapi.com/graphql",
+              },
+            },
+            "options": {
+              "attempts": {
+                "max": Infinity,
+              },
+              "delay": {
+                "initial": 100,
+              },
+            },
+          },
         },
       }
     }

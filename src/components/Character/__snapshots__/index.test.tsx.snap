@@ -16,7 +16,7 @@ exports[`Character mounts 1`] = `
     <img
       alt=""
       className="object-cover h-48 w-48 lg:h-96 lg:w-96"
-      fetchPriority="high"
+      fetchpriority="high"
       src="__character_image__"
     />
     <div
