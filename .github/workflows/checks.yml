@@ -70,6 +70,8 @@ jobs:
         run: yarn install --immutable
 
       - name: Build
+        env:
+          VITE_PUBLIC_HASH: ${{ hashFiles('public/**') }}
         run: yarn build --base '/reimagined-octo-train/'
 
       - uses: actions/configure-pages@v3

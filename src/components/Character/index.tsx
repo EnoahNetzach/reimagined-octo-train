@@ -57,7 +57,7 @@ export default function Character() {
           <img
             alt=""
             className="object-cover h-48 w-48 lg:h-96 lg:w-96"
-            fetchPriority="high"
+            fetchpriority="high"
             src={character.image ?? undefined}
           />
 

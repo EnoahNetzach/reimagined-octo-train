@@ -1,6 +1,8 @@
 import { Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { BatchHttpLink } from '@apollo/client/link/batch-http'
+import { RetryLink } from '@apollo/client/link/retry'
 import Character from '~/components/Character'
 import ErrorPage from '~/components/ErrorPage'
 import MainLayout from '~/components/MainLayout'
@@ -21,7 +23,6 @@ const router = createBrowserRouter(
 )
 
 const client = new ApolloClient({
-  uri: 'https://rickandmortyapi.com/graphql',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
@@ -38,6 +39,9 @@ const client = new ApolloClient({
       },
     },
   }),
+  link: new RetryLink({ attempts: { max: Infinity }, delay: { initial: 100 } }).concat(
+    new BatchHttpLink({ uri: 'https://rickandmortyapi.com/graphql' }),
+  ),
 })
 
 export default function App() {

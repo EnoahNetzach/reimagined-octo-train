@@ -37,6 +37,7 @@ export default function Characters() {
 
   const [filter, setFilter] = useState('')
   const [latestPageLoaded, setLatestPageLoaded] = useState(1)
+  const [loadingMore, setLoadingMore] = useState(false)
 
   useEffect(() => {
     setLatestPageLoaded(1)
@@ -47,11 +48,13 @@ export default function Characters() {
   const loadMore = useCallback(async () => {
     try {
       const nextPage = latestPageLoaded + 1
+      setLoadingMore(true)
       await fetchMore({ variables: { page: nextPage } })
       setLatestPageLoaded(nextPage)
     } catch {
       // ignore
     }
+    setLoadingMore(false)
   }, [fetchMore, latestPageLoaded])
 
   return (
@@ -86,7 +89,7 @@ export default function Characters() {
                     <img
                       alt=""
                       className="self-center object-cover h-24 w-24"
-                      fetchPriority="low"
+                      fetchpriority="low"
                       src={character.image ?? ''}
                     />
 
@@ -119,7 +122,9 @@ export default function Characters() {
 
           {(data?.characters?.info?.count ?? 0) > (data?.characters?.results?.length ?? 0) ? (
             <div>
-              <button onClick={loadMore}>{t('list.loadMore')}</button>
+              <button disabled={loadingMore} onClick={loadMore}>
+                {loadingMore ? t('loading') : t('list.loadMore')}
+              </button>
             </div>
           ) : null}
         </nav>
