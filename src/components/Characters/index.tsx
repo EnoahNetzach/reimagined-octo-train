@@ -94,7 +94,7 @@ export default function Characters() {
                     />
 
                     <figcaption className="flex-grow">
-                      <h2 className="text-lg font-bold text-primary">{character.name}</h2>
+                      <h2 className="heading-title-bold-secondary">{character.name}</h2>
 
                       <section>
                         <span
@@ -105,12 +105,12 @@ export default function Characters() {
                       </section>
 
                       <section>
-                        <h3 className="text-secondary">{t('location.name')}</h3>
+                        <h3 className="heading-title-tertiary">{t('location.name')}</h3>
                         {character.location?.id ? character.location.name : t('location.unknown')}
                       </section>
 
                       <section>
-                        <h3 className="text-secondary">{t('episode.first.name')}</h3>
+                        <h3 className="heading-title-tertiary">{t('episode.first.name')}</h3>
                         {character.episode[0]?.name}
                       </section>
                     </figcaption>

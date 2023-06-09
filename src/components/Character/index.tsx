@@ -62,7 +62,7 @@ export default function Character() {
           />
 
           <div className="lg:contents">
-            <h1 className="text-4xl lg:text-6xl font-bold text-primary">{character.name}</h1>
+            <h1 className="heading-title-bold-primary">{character.name}</h1>
 
             <section>
               <span
@@ -73,17 +73,19 @@ export default function Character() {
             </section>
 
             <section>
-              <h3 className="text-secondary inline-block">{t('character.species')}</h3> {character.species}
+              <h3 className="heading-title-tertiary inline-block">{t('character.species')}</h3> {character.species}
               {character.type ? <span> ({character.type})</span> : null}
             </section>
 
             <section>
-              <h3 className="text-secondary inline-block">{t('character.gender')}</h3>{' '}
+              <h3 className="heading-title-tertiary inline-block">{t('character.gender')}</h3>{' '}
               {t(`character.gender.${character.gender?.toLowerCase()}`)}
             </section>
 
             <section>
-              <h3 className={`text-secondary ${character.origin?.id ? '' : 'inline-block'}`}>{t('origin.name')}</h3>
+              <h3 className={`heading-title-tertiary ${character.origin?.id ? '' : 'inline-block'}`}>
+                {t('origin.name')}
+              </h3>
 
               {character.origin?.id ? (
                 <details>
@@ -107,7 +109,9 @@ export default function Character() {
             </section>
 
             <section>
-              <h3 className={`text-secondary ${character.location?.id ? '' : 'inline-block'}`}>{t('location.name')}</h3>
+              <h3 className={`heading-title-tertiary ${character.location?.id ? '' : 'inline-block'}`}>
+                {t('location.name')}
+              </h3>
 
               {character.location?.id ? (
                 <details>
@@ -131,7 +135,7 @@ export default function Character() {
             </section>
 
             <section>
-              <h3 className="text-secondary">{t('episode.list')}</h3>
+              <h3 className="heading-title-tertiary">{t('episode.list')}</h3>
               <details>
                 <summary>{t('episode.number', { count: character.episode.length })}</summary>
 

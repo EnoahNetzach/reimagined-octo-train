@@ -23,7 +23,7 @@ exports[`Character mounts 1`] = `
       className="lg:contents"
     >
       <h1
-        className="text-4xl lg:text-6xl font-bold text-primary"
+        className="heading-title-bold-primary"
       >
         __character_name__
       </h1>
@@ -37,7 +37,7 @@ exports[`Character mounts 1`] = `
       </section>
       <section>
         <h3
-          className="text-secondary inline-block"
+          className="heading-title-tertiary inline-block"
         >
           t(character.species)
         </h3>
@@ -51,7 +51,7 @@ exports[`Character mounts 1`] = `
       </section>
       <section>
         <h3
-          className="text-secondary inline-block"
+          className="heading-title-tertiary inline-block"
         >
           t(character.gender)
         </h3>
@@ -60,7 +60,7 @@ exports[`Character mounts 1`] = `
       </section>
       <section>
         <h3
-          className="text-secondary "
+          className="heading-title-tertiary "
         >
           t(origin.name)
         </h3>
@@ -99,7 +99,7 @@ exports[`Character mounts 1`] = `
       </section>
       <section>
         <h3
-          className="text-secondary "
+          className="heading-title-tertiary "
         >
           t(location.name)
         </h3>
@@ -138,7 +138,7 @@ exports[`Character mounts 1`] = `
       </section>
       <section>
         <h3
-          className="text-secondary"
+          className="heading-title-tertiary"
         >
           t(episode.list)
         </h3>

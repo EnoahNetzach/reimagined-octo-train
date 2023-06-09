@@ -7,19 +7,31 @@
     --color-primary: 92 173 74;
     --color-secondary: 167 203 84;
     --color-ternary: 32 141 69;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: dark light;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
   }
 }
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer components {
+  .heading-title-bold-primary {
+    @apply text-4xl lg:text-6xl font-bold text-primary;
+  }
 
-  color-scheme: dark light;
+  .heading-title-bold-secondary {
+    @apply text-lg font-bold text-primary;
+  }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  .heading-title-tertiary {
+    @apply text-secondary;
+  }
 }
